@@ -8,7 +8,7 @@ import { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
 
 const Explore = () => {
-  const { ref, inView } = useInView();
+  const { inView } = useInView();
   const { data: posts, fetchNextPage, hasNextPage } = useGetPosts();
 
   const [ searchValue, setSearchValue ] = useState<string>('')
@@ -29,7 +29,7 @@ const Explore = () => {
   }
 
   const shouldShowSearchResults = searchValue !== '';
-  const shouldShowPosts = !shouldShowSearchResults && posts.pages.every(item => item.documents.length === 0);
+  const shouldShowPosts = !shouldShowSearchResults && posts.pages.every(item => item?.documents.length === 0);
 
   return (
     <div className="explore-container">
@@ -74,7 +74,7 @@ const Explore = () => {
          ) : posts.pages.map((item, index) => (
           <GridPostList
             key={`page-${index}`}
-            posts={item.documents}
+            posts={item?.documents}
           />
          ))}
       </div>
