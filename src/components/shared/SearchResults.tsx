@@ -1,10 +1,9 @@
-import { Models } from 'appwrite'
 import Loader from './Loader';
 import GridPostList from './GridPostList';
 
 type SearchResultsProps = {
     isSearchFetching: boolean,
-    searchedPosts: Models.Document[];
+    searchedPosts: any;
 }
 const SearchResults = ({ isSearchFetching, searchedPosts }: SearchResultsProps) => {
     if (isSearchFetching)  return <Loader/>
@@ -15,7 +14,7 @@ const SearchResults = ({ isSearchFetching, searchedPosts }: SearchResultsProps) 
         )
     }
     return (
-    <p className='text-light-4 mt-10 text-center w-full'>No results</p>
+        <p className='text-light-4 mt-10 text-center w-full'>No results</p>
   )
 }
 
